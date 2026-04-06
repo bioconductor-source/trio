@@ -9,7 +9,7 @@ Transforms a ped-file into a genotype file as required by, e.g., the functions f
 }
 \usage{
 ped2geno(ped, snpnames = NULL, coded = c("12", "AB", "ATCG", "1234"), 
-   naVal = 0, cols4ID = FALSE)
+   naVal = 0, cols4ID = FALSE, ref = NULL, alt = NULL)
 }
 
 \arguments{
@@ -23,6 +23,10 @@ ped2geno(ped, snpnames = NULL, coded = c("12", "AB", "ATCG", "1234"),
 }
   \item{cols4ID}{logical indicating whether columns should be added to output matrix containing the family ID and the individual ID. If \code{FALSE}, the individual IDs are used as the row names of the output matrix.
 }
+	
+	\item{ref}{character vector specifying the reference alleles of the SNPs in \code{ped}, where the alleles must be coded by \code{"A"}, \code{"T"}, \code{"C"}, and \code{"G"}. Missing values are not allowed. If specified, this vector is added as attribute to the genotype matrix returned by \code{ped2geno}. Must be specified, if \code{alt} is specified.} 
+
+ \item{alt}{character vector specifying the alternative alleles of the SNPs in \code{ped}, where the alleles must be coded by \code{"A"}, \code{"T"}, \code{"C"}, and \code{"G"}. It is assumed that the SNPs in the ped file are biallelic so that each SNP has one alternative allele. Missing values are not allowed. If specified, this vector is added as attribute to the genotype matrix returned by \code{ped2geno}. Must be specified, if \code{ref} is specified.} 
 }
 
 \value{A vector (if \code{ped} consists of alleles for one SNP) or matrix (otherwise) containing one column for each SNP representing the genotypes of the respective SNP, where the genotypes are coded

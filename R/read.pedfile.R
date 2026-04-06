@@ -1,5 +1,6 @@
 read.pedfile <- function(file, first.row = NA, coded = NULL, naVal = 0, sep = " ", 
-		p2g = FALSE, non.rs.IDs = FALSE, asDataTable = FALSE, cols4ID = FALSE){
+		p2g = FALSE, non.rs.IDs = FALSE, asDataTable = FALSE, cols4ID = FALSE,
+		ref = NULL, alt = NULL){
 	if(!is.null(coded) && !coded %in% c("12", "AB", "1234", "ATCG"))
 		stop("coded must be either '12', or 'AB', or '1234', or 'ATCG'.")
 	if(is.na(first.row)){
@@ -67,8 +68,13 @@ read.pedfile <- function(file, first.row = NA, coded = NULL, naVal = 0, sep = " 
 	if(any(duplicated(ped$pid)))
 		stop("Even after combining the first and second column, the individual IDs\n",
 			"in the second column are not unique. Please make them unique in file.")
-	if(!p2g)
+	if(!p2g){
+		if(!is.null(ref) | !is.null(alt))
+			warning("Since p2g = FALSE, the specifications of ref and alt are ignored.\n",
+				"Reference and alternative alleles are only added to a genotype matrix,\n",
+				"i.e. if p2g is set to TRUE.") 
 		return(ped)
+	}
 	if(is.null(coded)){
 		ids.select <- sample(n.snp, min(n.snp, 20)) * 2 + 6
 		if(asDataTable)
@@ -88,6 +94,7 @@ read.pedfile <- function(file, first.row = NA, coded = NULL, naVal = 0, sep = " 
 			"Please specify coded and naVal.")
 		cat("NOTE: Since coded has not been specified, it is set to \"", coded, "\".\n\n", sep="")
 	}
-	ped2geno(ped, snpnames = snpnames, coded = coded, naVal = naVal, cols4ID = cols4ID)
+	ped2geno(ped, snpnames = snpnames, coded = coded, naVal = naVal, cols4ID = cols4ID,
+		ref = ref, alt = alt)
 }
 		   

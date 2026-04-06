@@ -7,51 +7,37 @@
 %%Title: R Graphics Output
 %%Creator: R Software
 %%Pages: (atend)
-%%BoundingBox: 79 203 516 639
+%%BoundingBox: 0 0 470 470
 %%EndComments
 %%BeginProlog
 /bp  { gs gs } def
 % begin .ps.prolog
-/gs  { gsave } def
-/gr  { grestore } def
-/ep  { showpage gr gr } def
-/m   { moveto } def
-/l  { rlineto } def
-/np  { newpath } def
-/cp  { closepath } def
-/f   { fill } def
-/o   { stroke } def
-/c   { newpath 0 360 arc } def
-/r   { 4 2 roll moveto 1 copy 3 -1 roll exch 0 exch rlineto 0 rlineto -1 mul 0 exch rlineto closepath } def
-/p1  { stroke } def
-/p2  { gsave bg fill grestore newpath } def
-/p3  { gsave bg fill grestore stroke } def
-/p6  { gsave bg eofill grestore newpath } def
-/p7  { gsave bg eofill grestore stroke } def
+/gs  { gsave } bind def
+/gr  { grestore } bind def
+/ep  { showpage gr gr } bind def
+/m   { moveto } bind def
+/l  { rlineto } bind def
+/np  { newpath } bind def
+/cp  { closepath } bind def
+/f   { fill } bind def
+/o   { stroke } bind def
+/c   { newpath 0 360 arc } bind def
+/r   { 4 2 roll moveto 1 copy 3 -1 roll exch 0 exch rlineto 0 rlineto -1 mul 0 exch rlineto closepath } bind def
+/p1  { stroke } bind def
+/p2  { gsave bg fill grestore newpath } bind def
+/p3  { gsave bg fill grestore stroke } bind def
+/p6  { gsave bg eofill grestore newpath } bind def
+/p7  { gsave bg eofill grestore stroke } bind def
 /t   { 5 -2 roll moveto gsave rotate
        1 index stringwidth pop
-       mul neg 0 rmoveto show grestore } def
-/ta  { 4 -2 roll moveto gsave rotate show } def
-/tb  { 2 -1 roll 0 rmoveto show } def
+       mul neg 0 rmoveto show grestore } bind def
+/ta  { 4 -2 roll moveto gsave rotate show } bind def
+/tb  { 2 -1 roll 0 rmoveto show } bind def
 /cl  { grestore gsave newpath 3 index 3 index moveto 1 index
        4 -1 roll lineto  exch 1 index lineto lineto
-       closepath clip newpath } def
-/srgb { [ /CIEBasedABC
-          << /DecodeLMN
-               [ { dup 0.03928 le
-                        {12.92321 div}
-                        {0.055 add 1.055 div 2.4 exp }
-                     ifelse
-                 } bind dup dup
-               ]
-             /MatrixLMN [0.412457 0.212673 0.019334
-                         0.357576 0.715152 0.119192
-                         0.180437 0.072175 0.950301]
-             /WhitePoint [0.9505 1.0 1.0890]
-           >>
-         ] setcolorspace } def
-/setrgb { srgb setcolor } def
-/s   { scalefont setfont } def
+       closepath clip newpath } bind def
+/rgb { setrgbcolor } bind def
+/s   { scalefont setfont } bind def
 % end   .ps.prolog
 %%IncludeResource: font Helvetica
 /Helvetica findfont
@@ -95,15 +81,7 @@ dup length dict begin
 %%EndProlog
 %%Page: 1 1
 bp
-[ /CIEBasedABC
-  << /DecodeLMN
-       [ { dup 0.03928 le {12.92321 div} {0.055 add 1.055 div 2.4 exp } ifelse } bind dup dup ]
-     /MatrixLMN [0.412457 0.212673 0.019334 0.357576 0.715152 0.119192 0.180437 0.072175 0.950301]
-     /WhitePoint [0.9505 1.0 1.0890]
-  >>
-] setcolorspace
-79.39 203.07 515.89 638.82 cl
-79.39 203.07 515.89 638.82 cl
+0.00 0.00 470.25 469.50 cl
 /bg { 0.7451 setgray } def
 0 setgray
 0.75 setlinewidth
@@ -111,59 +89,59 @@ bp
 1 setlinecap
 1 setlinejoin
 10.00 setmiterlimit
-151.29 279.51 13.51 212.06 r p3
-167.50 279.51 13.51 170.78 r p3
-183.71 279.51 13.51 262.73 r p3
-199.92 279.51 13.51 182.04 r p3
-216.13 279.51 13.51 108.85 r p3
-232.34 279.51 13.51 133.24 r p3
-248.55 279.51 13.51 230.83 r p3
-264.76 279.51 13.51 142.63 r p3
-280.97 279.51 13.51 300.27 r p3
-297.18 279.51 13.51 176.41 r p3
-313.39 279.51 13.51 213.94 r p3
-329.60 279.51 13.51 236.46 r p3
-345.81 279.51 13.51 148.26 r p3
-362.02 279.51 13.51 152.01 r p3
-378.23 279.51 13.51 223.32 r p3
-394.44 279.51 13.51 142.63 r p3
-410.65 279.51 13.51 155.76 r p3
-426.86 279.51 13.51 84.45 r p3
-443.07 279.51 13.51 298.39 r p3
-459.28 279.51 13.51 135.12 r p3
-79.39 203.07 515.89 638.82 cl
+73.15 76.78 14.82 212.17 r p3
+90.94 76.78 14.82 250.74 r p3
+108.72 76.78 14.82 237.24 r p3
+126.51 76.78 14.82 144.66 r p3
+144.29 76.78 14.82 119.59 r p3
+162.08 76.78 14.82 144.66 r p3
+179.86 76.78 14.82 217.95 r p3
+197.65 76.78 14.82 140.80 r p3
+215.44 76.78 14.82 277.75 r p3
+233.22 76.78 14.82 183.24 r p3
+251.01 76.78 14.82 244.96 r p3
+268.79 76.78 14.82 217.95 r p3
+286.58 76.78 14.82 179.38 r p3
+304.36 76.78 14.82 146.59 r p3
+322.15 76.78 14.82 221.81 r p3
+339.94 76.78 14.82 175.52 r p3
+357.72 76.78 14.82 219.88 r p3
+375.51 76.78 14.82 79.08 r p3
+393.29 76.78 14.82 333.68 r p3
+411.08 76.78 14.82 158.16 r p3
+0.00 0.00 470.25 469.50 cl
 /Font1 findfont 12 s
 0 setgray
-162.35 262.11 (snp1.D) 1 90 t
-178.56 262.11 (snp1.R) 1 90 t
-194.77 262.11 (snp2.D) 1 90 t
-210.98 262.11 (snp2.R) 1 90 t
-227.19 262.11 (snp3.D) 1 90 t
-243.40 262.11 (snp3.R) 1 90 t
-259.61 262.11 (snp4.D) 1 90 t
-275.82 262.11 (snp4.R) 1 90 t
-292.03 262.11 (snp5.D) 1 90 t
-308.24 262.11 (snp5.R) 1 90 t
-324.45 262.11 (snp6.D) 1 90 t
-340.66 262.11 (snp6.R) 1 90 t
-356.87 262.11 (snp7.D) 1 90 t
-373.08 262.11 (snp7.R) 1 90 t
-389.29 262.11 (snp8.D) 1 90 t
-405.50 262.11 (snp8.R) 1 90 t
-421.71 262.11 (snp9.D) 1 90 t
-437.92 262.11 (snp9.R) 1 90 t
-454.13 262.11 (snp10.D) 1 90 t
-470.34 262.11 (snp10.R) 1 90 t
-79.39 203.07 515.89 638.82 cl
+84.87 59.04 (snp1.D) 1 90 t
+102.65 59.04 (snp1.R) 1 90 t
+120.44 59.04 (snp2.D) 1 90 t
+138.23 59.04 (snp2.R) 1 90 t
+156.01 59.04 (snp3.D) 1 90 t
+173.80 59.04 (snp3.R) 1 90 t
+191.58 59.04 (snp4.D) 1 90 t
+209.37 59.04 (snp4.R) 1 90 t
+227.15 59.04 (snp5.D) 1 90 t
+244.94 59.04 (snp5.R) 1 90 t
+262.73 59.04 (snp6.D) 1 90 t
+280.51 59.04 (snp6.R) 1 90 t
+298.30 59.04 (snp7.D) 1 90 t
+316.08 59.04 (snp7.R) 1 90 t
+333.87 59.04 (snp8.D) 1 90 t
+351.65 59.04 (snp8.R) 1 90 t
+369.44 59.04 (snp9.D) 1 90 t
+387.23 59.04 (snp9.R) 1 90 t
+405.01 59.04 (snp10.D) 1 90 t
+422.80 59.04 (snp10.R) 1 90 t
+0.00 0.00 470.25 469.50 cl
 /Font2 findfont 14 s
 0 setgray
-169.29 604.27 (Mar) 0 ta
+106.77 434.95 (Mar) 0 ta
 -0.210 (ginal Frequenc) tb
 -0.140 (y of Being in the Models) tb gr
 /Font1 findfont 12 s
-92.35 397.46 (P) 90 ta
+12.96 211.27 (P) 90 ta
 -0.600 (ercentage) tb gr
-79.39 203.07 515.89 638.82 cl
+0.00 0.00 470.25 469.50 cl
 0 setgray
 0.75 setlinewidth
 [] 0 setdash
@@ -171,30 +149,30 @@ bp
 1 setlinejoin
 10.00 setmiterlimit
 np
-138.43 279.51 m
-0 281.22 l
+59.04 76.78 m
+0 289.32 l
 o
 np
-138.43 279.51 m
+59.04 76.78 m
 -7.20 0 l
 o
 np
-138.43 373.25 m
+59.04 173.22 m
 -7.20 0 l
 o
 np
-138.43 466.99 m
+59.04 269.66 m
 -7.20 0 l
 o
 np
-138.43 560.73 m
+59.04 366.10 m
 -7.20 0 l
 o
 /Font1 findfont 12 s
-121.15 279.51 (0) .5 90 t
-121.15 373.25 (5) .5 90 t
-121.15 466.99 (10) .5 90 t
-121.15 560.73 (15) .5 90 t
+41.76 76.78 (0) .5 90 t
+41.76 173.22 (5) .5 90 t
+41.76 269.66 (10) .5 90 t
+41.76 366.10 (15) .5 90 t
 ep
 %%Trailer
 %%Pages: 1

@@ -29,7 +29,12 @@
     and 2 refers to the minor allele. The respective haplotype
     frequencies will be normalized to sum one.
  }
-  \item{blocks}{An optional vector of integers, specifying (in sequence)
+  \item{blocks}{Currently ignored, as the package haplo.stats is currently not available on CRAN. 
+	  Thus, all SNPs are treated as if they were not in LD, even if blocks is specified. Please use in the meanwhile
+		the argument freq, if haplotypes and their frequencies should be taken into acount in the generation
+		of the pseudo-controls.
+		
+		An optional vector of integers, specifying (in sequence)
     the lengths of the linkage disequilibrium blocks.  The sum of these
     integers must be equal to the total numbers of SNPs in the data set
     used as input.  Using the integer 1 for SNPs not contained in LD
@@ -44,8 +49,7 @@
     data should be returned in genotype format, using one variable per
     SNP (\code{FALSE}).}
 
-  \item{...}{Optional arguments that can be passed to function
-    \code{\link[haplo.stats]{haplo.em}}.}
+  \item{...}{Optional arguments that can be passed to function \code{haplo.em} from the package \code{haplo.stats}.}
 
 }
 
@@ -58,7 +62,7 @@
   information as an argument. If this argument is not specified, a
   uniform block length of 1 (i.e., no LD structure) is assumed. If the
   haplotype frequencies are not specified, they are estimated from the
-  parents' genotypes using the function \code{\link[haplo.stats]{haplo.em}}.  The
+  parents' genotypes using the function \code{haplo.em} from the package \code{haplo.stats}.  The
   function then returns a list that contains the genotype information in
   binary format, suitable as input for trio logic regression.  Since
   trio logic regression requires complete data, the function \code{trio.prepare}
@@ -98,7 +102,7 @@ and Ruczinski, I. (2010). Detection of SNP-SNP Interactions in Trios of Parents 
 
 \author{Qing Li, mail2qing@yahoo.com}
 
-\seealso{\code{\link{trio.check}}, \code{\link[haplo.stats]{haplo.em}}}
+\seealso{\code{\link{trio.check}}}
 
 \examples{
 data(trio.data)

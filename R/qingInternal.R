@@ -3068,13 +3068,13 @@ function(df, dataHeaders=NULL, genotype=c("11", "12", "22"), snpBase=1){
 	for ( i in 1:4 ){
 		if(!is.na(m[i])){
 			if (i==1){
-				if(class(data[,m[i]])=="factor") data[,i]=as.character(data[,m[i]])
+				if(is(data[,m[i]], "factor")) data[,i]=as.character(data[,m[i]])
 			}
 			if (i==4){
-				if(class(data[,m[i]])=="factor") data[,i]=as.numeric(as.character(data[,m[i]]))
+				if(is(data[,m[i]], "factor")) data[,i]=as.numeric(as.character(data[,m[i]]))
 			}
 			if( i==2 | i==3){
-				if(class(data[,m[i]])=="factor") data[,i]=as.numeric(as.character(data[,m[i]]))
+				if(is(data[,m[i]], "factor")) data[,i]=as.numeric(as.character(data[,m[i]]))
 			}
 		}
 	}
@@ -4943,7 +4943,7 @@ function(data, cols=NULL, loci.ct, is.1digit=FALSE, dig1Code=c(0, 1, 2, 3), dig2
    if(ct==1){
 
      if(loci.ct>=2){
-       hap.re = haplo.stats::haplo.em(geno=data, ...)
+       hap.re = list(hap.prob = NULL, haplotype = NULL)  # haplo.stats::haplo.em(geno=data, ...)
        
        hap.prob = hap.re$hap.prob
     
@@ -5001,7 +5001,7 @@ function(data, cols=NULL, loci.ct, is.1digit=FALSE, dig1Code=c(0, 1, 2, 3), dig2
       if(loci.ct[i]!=1){
 		  allsnp = FALSE
           ## for Hap
-          hap.re = haplo.stats::haplo.em(geno=data[, ((cut.rg[i,1]):(cut.rg[i,2]))], ...)
+          hap.re = list(hap.prob = NULL, haplotype = NULL)  # haplo.stats::haplo.em(geno=data[, ((cut.rg[i,1]):(cut.rg[i,2]))], ...)
 
           # print(hap.re)
           hap.prob = hap.re$hap.prob
@@ -9412,7 +9412,7 @@ function(txtF, delim=",", dataHeaders=NULL, sorted=FALSE, ...){
 	
 	## cast the data into the right format
 	for ( i in m ){
-		if(class(data[,i])=="factor") data[,i]=as.numeric(as.character(data[,i]))
+		if(is(data[,i], "factor")) data[,i]=as.numeric(as.character(data[,i]))
 	}
 	
 	## create key as a combination of chromosome and block

@@ -21,7 +21,8 @@ colPOlrt, colTAT,
 vcf2geno,
 colEMlrt,
 qingEnv,
-colNtrios, ntrios2Dom, ntrios2Rec
+colNtrios, ntrios2Dom, ntrios2Rec, addRefAlt,
+combineNtrios, combineNtriosList
 )
 
 import(survival, LogicReg, data.table)
@@ -71,4 +72,4 @@ S3method(trioFS, default)
 S3method(trioFS, trioPrepare)
 S3method(trioFS, formula)
 S3method(print, colGxEunstruct)
-
+S3method(print, tabNtrios)

@@ -7,51 +7,37 @@
 %%Title: R Graphics Output
 %%Creator: R Software
 %%Pages: (atend)
-%%BoundingBox: 79 203 516 639
+%%BoundingBox: 0 0 470 470
 %%EndComments
 %%BeginProlog
 /bp  { gs gs } def
 % begin .ps.prolog
-/gs  { gsave } def
-/gr  { grestore } def
-/ep  { showpage gr gr } def
-/m   { moveto } def
-/l  { rlineto } def
-/np  { newpath } def
-/cp  { closepath } def
-/f   { fill } def
-/o   { stroke } def
-/c   { newpath 0 360 arc } def
-/r   { 4 2 roll moveto 1 copy 3 -1 roll exch 0 exch rlineto 0 rlineto -1 mul 0 exch rlineto closepath } def
-/p1  { stroke } def
-/p2  { gsave bg fill grestore newpath } def
-/p3  { gsave bg fill grestore stroke } def
-/p6  { gsave bg eofill grestore newpath } def
-/p7  { gsave bg eofill grestore stroke } def
+/gs  { gsave } bind def
+/gr  { grestore } bind def
+/ep  { showpage gr gr } bind def
+/m   { moveto } bind def
+/l  { rlineto } bind def
+/np  { newpath } bind def
+/cp  { closepath } bind def
+/f   { fill } bind def
+/o   { stroke } bind def
+/c   { newpath 0 360 arc } bind def
+/r   { 4 2 roll moveto 1 copy 3 -1 roll exch 0 exch rlineto 0 rlineto -1 mul 0 exch rlineto closepath } bind def
+/p1  { stroke } bind def
+/p2  { gsave bg fill grestore newpath } bind def
+/p3  { gsave bg fill grestore stroke } bind def
+/p6  { gsave bg eofill grestore newpath } bind def
+/p7  { gsave bg eofill grestore stroke } bind def
 /t   { 5 -2 roll moveto gsave rotate
        1 index stringwidth pop
-       mul neg 0 rmoveto show grestore } def
-/ta  { 4 -2 roll moveto gsave rotate show } def
-/tb  { 2 -1 roll 0 rmoveto show } def
+       mul neg 0 rmoveto show grestore } bind def
+/ta  { 4 -2 roll moveto gsave rotate show } bind def
+/tb  { 2 -1 roll 0 rmoveto show } bind def
 /cl  { grestore gsave newpath 3 index 3 index moveto 1 index
        4 -1 roll lineto  exch 1 index lineto lineto
-       closepath clip newpath } def
-/srgb { [ /CIEBasedABC
-          << /DecodeLMN
-               [ { dup 0.03928 le
-                        {12.92321 div}
-                        {0.055 add 1.055 div 2.4 exp }
-                     ifelse
-                 } bind dup dup
-               ]
-             /MatrixLMN [0.412457 0.212673 0.019334
-                         0.357576 0.715152 0.119192
-                         0.180437 0.072175 0.950301]
-             /WhitePoint [0.9505 1.0 1.0890]
-           >>
-         ] setcolorspace } def
-/setrgb { srgb setcolor } def
-/s   { scalefont setfont } def
+       closepath clip newpath } bind def
+/rgb { setrgbcolor } bind def
+/s   { scalefont setfont } bind def
 % end   .ps.prolog
 %%IncludeResource: font Helvetica
 /Helvetica findfont
@@ -95,27 +81,19 @@ dup length dict begin
 %%EndProlog
 %%Page: 1 1
 bp
-[ /CIEBasedABC
-  << /DecodeLMN
-       [ { dup 0.03928 le {12.92321 div} {0.055 add 1.055 div 2.4 exp } ifelse } bind dup dup ]
-     /MatrixLMN [0.412457 0.212673 0.019334 0.357576 0.715152 0.119192 0.180437 0.072175 0.950301]
-     /WhitePoint [0.9505 1.0 1.0890]
-  >>
-] setcolorspace
-79.39 203.07 515.89 638.82 cl
+0.00 0.00 470.25 469.50 cl
 /Font1 findfont 11 s
 0 setgray
-106.60 293.99 (X20) 0 0 t
-106.60 322.77 (X4 & !X6 & !X12) 0 0 t
-106.60 351.54 (X2 & !X3 & !X16) 0 0 t
-106.60 380.31 (X13 & X15) 0 0 t
-106.60 409.09 (!X8 & !X12) 0 0 t
-106.60 437.86 (!X3 & X9 & !X12) 0 0 t
-106.60 466.64 (X2 & !X3 & !X12) 0 0 t
-106.60 495.41 (X10 & !X14 & X17) 0 0 t
-106.60 524.19 (!X3 & X9 & !X16) 0 0 t
-106.60 552.96 (!X6 & !X12 & X17) 0 0 t
-200.80 269.17 488.67 585.68 cl
+27.54 103.19 (X7 & X11) 0 0 t
+27.54 136.89 (X17) 0 0 t
+27.54 170.60 (X2 & X7) 0 0 t
+27.54 204.30 (X5 & !X7 & !X13) 0 0 t
+27.54 238.00 (!X2 & X5 & X7) 0 0 t
+27.54 271.70 (!X7 & !X11) 0 0 t
+27.54 305.40 (!X3 & X5) 0 0 t
+27.54 339.11 (X5 & X11 & !X13) 0 0 t
+27.54 372.81 (!X11) 0 0 t
+115.74 73.44 440.01 410.46 cl
 0.7451 setgray
 0.75 setlinewidth
 [ 0.00 3.00] 0 setdash
@@ -123,57 +101,52 @@ bp
 1 setlinejoin
 10.00 setmiterlimit
 np
-200.80 297.94 m
-287.87 0 l
+115.74 107.14 m
+324.27 0 l
 o
 np
-200.80 326.71 m
-287.87 0 l
+115.74 140.84 m
+324.27 0 l
 o
 np
-200.80 355.49 m
-287.87 0 l
+115.74 174.55 m
+324.27 0 l
 o
 np
-200.80 384.26 m
-287.87 0 l
+115.74 208.25 m
+324.27 0 l
 o
 np
-200.80 413.04 m
-287.87 0 l
+115.74 241.95 m
+324.27 0 l
 o
 np
-200.80 441.81 m
-287.87 0 l
+115.74 275.65 m
+324.27 0 l
 o
 np
-200.80 470.59 m
-287.87 0 l
+115.74 309.35 m
+324.27 0 l
 o
 np
-200.80 499.36 m
-287.87 0 l
+115.74 343.06 m
+324.27 0 l
 o
 np
-200.80 528.14 m
-287.87 0 l
-o
-np
-200.80 556.91 m
-287.87 0 l
+115.74 376.76 m
+324.27 0 l
 o
 /bg { 0 setgray } def
-211.47 297.94 2.43 c p2
-235.25 326.71 2.43 c p2
-247.93 355.49 2.43 c p2
-254.23 384.26 2.43 c p2
-258.20 413.04 2.43 c p2
-262.19 441.81 2.43 c p2
-262.19 470.59 2.43 c p2
-262.64 499.36 2.43 c p2
-272.21 528.14 2.43 c p2
-478.01 556.91 2.43 c p2
-79.39 203.07 515.89 638.82 cl
+127.75 107.14 2.43 c p2
+218.13 140.84 2.43 c p2
+276.90 174.55 2.43 c p2
+276.90 208.25 2.43 c p2
+280.77 241.95 2.43 c p2
+324.62 275.65 2.43 c p2
+345.12 309.35 2.43 c p2
+387.70 343.06 2.43 c p2
+428.00 376.76 2.43 c p2
+0.00 0.00 470.25 469.50 cl
 0 setgray
 0.75 setlinewidth
 [] 0 setdash
@@ -181,40 +154,49 @@ o
 1 setlinejoin
 10.00 setmiterlimit
 np
-262.19 269.17 m
-161.44 0 l
+155.00 73.44 m
+243.80 0 l
 o
 np
-262.19 269.17 m
+155.00 73.44 m
 0 -6.48 l
 o
 np
-342.91 269.17 m
+215.95 73.44 m
 0 -6.48 l
 o
 np
-423.63 269.17 m
+276.90 73.44 m
+0 -6.48 l
+o
+np
+337.85 73.44 m
+0 -6.48 l
+o
+np
+398.80 73.44 m
 0 -6.48 l
 o
 /Font1 findfont 11 s
-262.19 245.84 (0) .5 0 t
-342.91 245.84 (5) .5 0 t
-423.63 245.84 (10) .5 0 t
+155.00 50.11 (-1.0) .5 0 t
+215.95 50.11 (-0.5) .5 0 t
+276.90 50.11 (0.0) .5 0 t
+337.85 50.11 (0.5) .5 0 t
+398.80 50.11 (1.0) .5 0 t
 np
-200.80 269.17 m
-287.87 0 l
-0 316.51 l
--287.87 0 l
-0 -316.51 l
-o
-79.39 203.07 515.89 638.82 cl
+ 115.74 73.44 m
+324.27 0 l
+0 337.02 l
+-324.27 0 l
+cp p1
+0.00 0.00 470.25 469.50 cl
 /Font2 findfont 13 s
 0 setgray
-344.74 607.58 ( Measure) .5 0 t
+277.87 435.31 ( Measure) .5 0 t
 /Font1 findfont 11 s
-317.23 219.92 (Impor) 0 ta
+250.36 24.19 (Impor) 0 ta
 0.440 (tance) tb gr
-132.52 269.17 488.67 585.68 cl
+53.14 66.10 443.03 416.36 cl
 0.4980 setgray
 0.75 setlinewidth
 [ 0.00 3.00] 0 setdash
@@ -222,8 +204,8 @@ o
 1 setlinejoin
 10.00 setmiterlimit
 np
-262.19 269.17 m
-0 316.51 l
+276.90 73.44 m
+0 337.02 l
 o
 ep
 %%Trailer

@@ -1,16 +1,24 @@
 \name{colNtrios}
 \alias{colNtrios}
+\alias{addRefAlt}
+\alias{print.tabNtrios}
 
 \title{
 Frequency of Genotype Combinations
 }
 \description{
 Computes the numbers of trios showing the ten different genotype combinations for each SNP in a matrix in genotype format.
+
+\code{addRefAlt} can be used to subsequently add information on reference and alternative alleles to the output of \code{colNtrios}, if \code{ref} and \code{alt} have not been specified in the actual \code{colNtrios} call.
 }
 
 \usage{
-colNtrios(mat.snp, env = NULL, onlyContributing = FALSE, famid = NULL,
-   size = 50)
+colNtrios(mat.snp, env = NULL, onlyContributing = FALSE, ref = NULL,
+   alt = NULL, famid = NULL, size = 50)
+	
+addRefAlt(matNumber, ref, alt)
+
+\method{print}{tabNtrios}(x, ...)
 }
 
 
@@ -22,10 +30,26 @@ colNtrios(mat.snp, env = NULL, onlyContributing = FALSE, famid = NULL,
   \item{env}{a vector of length \eqn{t} (see \code{mat.snp}) containing for each offspring the value of a binary environmental variable, which must take the values 0 and 1. If specified the numbers of trios showing the ten different genotype combinations are computed separately for the trios for which \code{env = 0} and for the trios for which \code{env = 1}.
 }
   \item{onlyContributing}{if \code{TRUE}, only the seven numbers of trios that contribute to the likelihood estimation in the performance of the genotypic TDT, e.g., with \code{\link{colTDT}}, are determined. If \code{FALSE} (which is the default), all ten numbers of trios for the ten different genotype combinations are computed.}
-	  \item{famid}{a vector of the same length as \code{env} specifying the family IDs for the corresponding values of the environmental variable in \code{env}. Can be used to reorder the vector \code{env} when the order of the trios differs between \code{env} and \code{mat.snp}. Ignored if \code{env} is not specified.
+	
+  \item{ref}{character vector specifying the reference alleles of the SNPs in \code{mat.snp}, where the alleles must be coded by \code{"A"}, \code{"T"}, \code{"C"}, and \code{"G"}. Missing values are not allowed. Ignored if information on the reference alleles is already available in \code{mat.snp}. If specified (and not ignored), this vector is added as attribute to the output of \code{colNtrios}. Must be specified, if \code{alt} is specified.} 
+
+ \item{alt}{character vector specifying the alternative alleles of the SNPs in \code{mat.snp}, where the alleles must be coded by \code{"A"}, \code{"T"}, \code{"C"}, and \code{"G"}. It is assumed that the SNPs in the ped file are biallelic so that each SNP has one alternative allele. Missing values are not allowed. Ignored if information on the alternative alleles is already available in \code{mat.snp}. If specified (and not ignored), this vector is added as attribute to the output of \code{colNtrios}. Must be specified, if \code{ref} is specified.} 
+	
+	
+  \item{famid}{a vector of the same length as \code{env} specifying the family IDs for the corresponding values of the environmental variable in \code{env}. Can be used to reorder the vector \code{env} when the order of the trios differs between \code{env} and \code{mat.snp}. Ignored if \code{env} is not specified.
 }
   \item{size}{the number of SNPs considered simultaneously when computing the parameter estimates. Ignored if \code{fast = FALSE}.
 }
+
+  \item{matNumber}{the output of \code{colNtrios}, i.e. either a numeric matrix or a list of two matrices containing the numbers of trios showing the different combinations of genotypes of the offsprings and their parents.
+}
+
+  \item{x}{an object of class \code{tabNtrios}, i.e. the output of \code{colNtrios} when \code{env} is not specified.
+}
+
+  \item{...}{ignored.}
+	
+	
 }
 
 
@@ -77,8 +101,7 @@ list.ntriosEnv <- colNtrios(mat.test, env = facEnv)
 
 # then a genotypic TDT for gene-environment interactions
 # can be performed by
-gxe.Nout <- colGxE(listNumber = list.ntriosEnv, 
-    env = facEnv)
+gxe.Nout <- colGxE(listNumber = list.ntriosEnv)
 }
 
 \keyword{models}

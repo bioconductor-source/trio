@@ -1,5 +1,5 @@
 ped2geno <- function(ped, snpnames = NULL, coded = c("12", "AB", "ATCG", "1234"), 
-		naVal = 0, cols4ID = FALSE){
+		naVal = 0, cols4ID = FALSE, ref = NULL, alt = NULL){
 	cn <- colnames(ped)
 	if(any(tolower(cn[1:6]) != c("famid", "pid", "fatid", "motid", "sex","affected")))
 		stop("The names of the first six columns must be\n",
@@ -30,6 +30,8 @@ ped2geno <- function(ped, snpnames = NULL, coded = c("12", "AB", "ATCG", "1234")
 		allele <- as.numeric(allele)
 	if(!is.na(naVal) && any(naVal==allele))
 		stop("naVal cannot be one of the letters/numbers coding for the alleles.")
+	if(!is.null(ref) | !is.null(alt))
+		checkRefAlt(ref, alt, n.snp)
 	for(i in 1:length(allele))
 		mat.allele[,i] <- colSums(mat.snp==allele[i], na.rm=TRUE)
 	mat.count <- mat.allele[seq(1, 2*n.snp, 2),, drop=FALSE] + 
@@ -45,6 +47,10 @@ ped2geno <- function(ped, snpnames = NULL, coded = c("12", "AB", "ATCG", "1234")
 		mat.snp <- mat.snp[,seq.in]
 		n.snp <- ncol(mat.snp) / 2
 		snpnames <- snpnames[ids.rs2]
+		if(!is.null(ref)){
+			ref <- ref[ids.rs2]
+			alt <- alt[ids.rs2]
+		}
 		warning(sum(!ids.rs2), " of the SNPs are monomorph. These SNPs are removed.")
 	}
 	mat.recoded <- matrix(NA, nrow(mat.snp), ncol(mat.snp))
@@ -97,6 +103,10 @@ ped2geno <- function(ped, snpnames = NULL, coded = c("12", "AB", "ATCG", "1234")
 			colnames(mat.trio) <- if(!is.null(snpnames)) snpnames
 				else paste("SNP", 1:n.snp, sep="")
 	} 
+	if(!is.null(ref)){
+		attr(mat.trio, "REF") <- ref
+		attr(mat.trio, "ALT") <- alt
+	}
 	mat.trio
 }
 			 

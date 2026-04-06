@@ -1,11 +1,29 @@
-colNtrios <- function(mat.snp, env = NULL, onlyContributing = FALSE, famid = NULL, size = 50){
+colNtrios <- function(mat.snp, env = NULL, onlyContributing = FALSE, ref = NULL, alt = NULL,
+		famid = NULL, size = 50){
 	checkMatSNP(mat.snp, size = size)
-	if(!is.null(env))
+	if(!is.null(attributes(mat.snp)$REF)){
+		if(!is.null(ref) | !is.null(alt))
+			warning("Reference and alternative alleles are already available in mat.snp.\n",
+				"Therefore, the specifications of ref and alt are ignored.")
+		ref <- attributes(mat.snp)$REF
+		alt <- attributes(mat.snp)$ALT
+	}
+	if(!is.null(ref) | !is.null(alt))
+		checkRefAlt(ref, alt, ncol(mat.snp))
+	if(!is.null(env)){
 		out <- ntrioGxE(mat.snp, env, only = onlyContributing, famid = famid, size = size)
-	else
+		class(out) <- "tabNtriosGxE"
+	}
+	else{
 		out <- ntrioTDT(mat.snp, only = onlyContributing, size = size)
+		class(out) <- "tabNtrios"
+	}
+	attr(out, "REF") <- ref
+	attr(out, "ALT") <- alt
 	out
 }
+
+print.tabNtrios <- function(x, ...) print(x[1:nrow(x), 1:ncol(x)])
 
 
 ntrios2Dom <- function(matNumber, check = TRUE, quiet = FALSE){

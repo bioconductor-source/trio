@@ -158,7 +158,7 @@ trioPImpEval <- function(dat, vec.primes){
 	cs <- colSums(mat.eval)
 	if(any(cs %in% c(0, nrow(mat.eval)))){
 		ids <- which(cs %in% c(0, nrow(mat.eval)))
-		warning("For ", length(ids), "of the ", ncol(mat.eval), " interactions, ",
+		warning("For ", length(ids), " of the ", ncol(mat.eval), " interactions, ",
 			"all cases and pseudo-controls show the same value.\n",
 			"These interactions are therefore removed.", call.=FALSE)
 		mat.eval <- mat.eval[,-ids]

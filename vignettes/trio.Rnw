@@ -476,7 +476,11 @@ A function called \texttt{findLDblocks} for identifying LD blocks, and thus, for
 specifying the length of the blocks is therefore also contained in this package (see Section \ref{getLD}).
 Given the lengths of the LD blocks, the haplotype frequencies can be
 estimated, using the function \texttt{haplo.em} in the
-\texttt{haplo.stat} package.
+\texttt{haplo.stats} package.
+
+\textbf{Since the haplo.stats package is currently not available at CRAN, the argument blocks is currently ignored so that no haplotype frequencies are estimated using haplo.em and no haplotype information is employed in the generation of the pseudo-controls. See Section \ref{haplotypeFreq} for how the argument freq of the function trio.prepare can be used to specify haplotypes and their frequencies for the generation of the pseudo-controls}.
+
+\textbf{Since we guess that the unavailability of haplo.stats is only temporary, we have not changed yet the discussion in the following sections on how the the specification of the argument blocks is used in the generation of the pseudo-controls. However, please note that in the application of trio.prepare this argument is ignored and the SNPs are considered individually, i.e.\ as if they were not in a haplotype block, even though the discussion states otherwise.}
 
 
 \subsection{Supported File Formats and Elementary Data Processing}\label{supported}
@@ -677,7 +681,7 @@ trio.rep <- trio.check(dat=trio.gen.err, is.linkage=FALSE, replace=TRUE)
 trio.rep$trio[1:6,c(1,2,7)]
 @ 
 
-\subsection{Using Haplotype Frequencies}
+\subsection{Using Haplotype Frequencies}\label{haplotypeFreq}
 
 As mentioned above, when estimates for the haplotype frequencies are
 already available, they can be used in the
@@ -715,7 +719,7 @@ to perform this analysis.
 \subsection{Parameter Settings for Trio Logic Regression}
 
 To ensure that the following examples are fast to run, we here only use 1000 iterations, i.e.\ the minimum number of iterations allowed,
-in the stochastic search algorithms, simulated annealing and MCMC, employed in trio logic regression. \textit{\bf In a real trio
+in the stochastic search algorithms, simulated annealing and MCMC, employed in trio logic regression. \textbf{In a real trio
 logic regression analysis, at least a few hundred thousands of iterations should be used, where the number of iterations
 in particular depends on the number of variables considered in the analysis.} 
 
@@ -906,7 +910,7 @@ importance measures for the interactions found. This procedure called trioFS (tr
 by 
 
 <<>>=
-fs.out <- trioFS(trio.bin, B=5, control=my.control, rand=9876543)
+fs.out <- trioFS(trio.bin, B=5, control=my.control, rand=1234)
 fs.out
 @
 

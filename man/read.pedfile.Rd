@@ -9,7 +9,8 @@ Reads a ped file into R and creates a data frame or data table in ped format, or
 }
 \usage{
 read.pedfile(file, first.row = NA, coded = NULL, naVal = 0, sep = " ", 
-   p2g = FALSE, non.rs.IDs = FALSE, asDataTable = FALSE, cols4ID=FALSE)
+   p2g = FALSE, non.rs.IDs = FALSE, asDataTable = FALSE, cols4ID=FALSE,
+   ref = NULL, alt = NULL)
 }
 
 \arguments{
@@ -29,8 +30,12 @@ read.pedfile(file, first.row = NA, coded = NULL, naVal = 0, sep = " ",
 }
   \item{asDataTable}{logical indication whether a data table or a data frame should be returned, if \code{p2g} is set to \code{FALSE}. By default, a data frame is returned in the case of \code{p2g = FALSE}.
 }
-  \item{cols4ID}{logical indicating whether columns should be added to output matrix containing the family ID and the individual ID. If \code{FALSE}, the individual IDs are used as the row names of the output matrix.
-}
+  \item{cols4ID}{logical indicating whether columns should be added to output matrix containing the family ID and the individual ID. If \code{FALSE}, the individual IDs are used as the row names of the output matrix.}
+
+\item{ref}{character vector specifying the reference alleles of the SNPs in the ped file, where the alleles must be coded by \code{"A"}, \code{"T"}, \code{"C"}, and \code{"G"}. Missing values are not allowed. If specified, this vector is added as attribute to the genotype matrix returned by \code{read.pedfile} if \code{p2g = TRUE}. Ignored if \code{p2g = FALSE}. Must be specified, if \code{alt} is specified.} 
+
+\item{alt}{character vector specifying the alternative alleles of the SNPs in the ped file, where the alleles must be coded by \code{"A"}, \code{"T"}, \code{"C"}, and \code{"G"}. It is assumed that the SNPs in the ped file are biallelic so that each SNP has one alternative allele. Missing values are not allowed. If specified, this vector is added as attribute to the genotype matrix returned by \code{read.pedfile} if \code{p2g = TRUE}. Ignored if \code{p2g = FALSE}. Must be specified, if \code{alt} is specified.} 
+
 }
 
 \value{If \code{p2g = FALSE}, depending on the specification of \code{asDataTable}, either a data frame or data table in ped format. If \code{p2g = TRUE}, a matrix in genotype format is returned.
